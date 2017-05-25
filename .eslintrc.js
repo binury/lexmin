@@ -13,5 +13,12 @@ module.exports = {
       impliedStrict: true,
       experimentalObjectRestSpread: true,
     }
-  }
+  },
+  'prettierOptions': {
+    'bracketSpacing': true,
+    'trailingComma': 'none',
+    'jsxBracketSameLine': false,
+    "singleQuote": true,
+    'printWidth': 120
+  },
 };

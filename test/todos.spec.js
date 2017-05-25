@@ -5,6 +5,7 @@ import { app } from '../src/app'
 import { Todo } from '../src/routes/todos'
 
 test.beforeEach( async t => {
+  await Todo.remove()
   t.context.request = request( app.callback())
 })
 

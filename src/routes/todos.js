@@ -1,16 +1,27 @@
 import Router from 'koa-router'
+import { Model, Database } from 'mongorito'
+const db = new Database( 'localhost/todos' )
 
+export class Todo extends Model {}
 const router = new Router(),
   todos = []
 
-router.get( '/todos', async ( ctx ) => {
-  ctx.body = todos
+
+
+router.get( '/', async ( ctx ) => {
+  ctx.body = Todo.find()
 })
 
-router.post( '/todos', async ( ctx ) => {
+router.post( '/', async ( ctx ) => {
   const { title } = ctx.request.body
-  todos.push({ title, completed: false })
-  ctx.status = 201
+  const todo = new Todo({ title, completed: false })
+  await todo.save()
+  ctx.status = 204
+})
+
+router.get('/completed', async ctx => {
+  ctx.body = await Todo.find({completed: true})
 })
 
 export default router
+

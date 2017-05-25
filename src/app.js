@@ -1,9 +1,12 @@
 import Koa from 'koa'
+import Router from 'koa-router'
 import bodyparser from 'koa-bodyparser'
-import todos from './routes/todos'
+import routes from './routes/index'
 
-export const app = new Koa()
+const app = new Koa()
+const router = new Router()
+
 app.listen( 3000 )
 app.use( bodyparser())
-app.use( todos.routes())
-
+router.use( routes.routes())
+app.use( router.routes())
