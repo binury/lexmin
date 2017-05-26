@@ -1,5 +1,6 @@
+/* eslint-disable */
 module.exports = {
-  extends: ['idiomatic', 'plugin:import/warnings', 'plugin:import/errors'],
+  extends: ['semistandard', 'plugin:import/warnings', 'plugin:import/errors'],
   env: {
     es6: true,
     browser: true,
