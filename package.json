@@ -36,9 +36,12 @@
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
+    "jsonwebtoken": "^7.4.1",
     "koa": "^2.2.0",
     "koa-bodyparser": "^4.2.0",
+    "koa-jwt": "^3.2.2",
     "koa-router": "^7.2.0",
+    "koa-socket": "^4.4.0",
     "mongorito": "^3.0.1"
   }
 }

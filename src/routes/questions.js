@@ -8,15 +8,16 @@ const router = new Router();
 db.connect();
 db.register(Question);
 
-router.get('/questions', async (ctx) => {
-  ctx.body = await Question.find();
-});
-
-router.post('/questions', async (ctx) => {
-  const { title } = ctx.request.body;
-  const question = new Question({ title, completed: false });
-  await question.save();
-  ctx.status = 201;
-});
+router
+  .get('/questions', async (ctx) => {
+    ctx.body = await Question.find();
+  })
+  .post('/questions', async (ctx) => {
+    // TODO: authenticate
+    const { title } = ctx.request.body;
+    const question = new Question({});
+    await question.save();
+    ctx.status = 201;
+  });
 
 export default router;
