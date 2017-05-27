@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "babel-node src/app.js",
-    "test": "env MONGODB_URI=localhost/lexmin nyc ava --serial"
+    "test": "env MONGODB_URI=localhost/lexmin nyc ava --concurrency 1 --serial"
   },
   "ava": {
     "babel": "inherit",
@@ -33,6 +33,7 @@
     "webpack": "^2.6.0"
   },
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "eslint-plugin-import": "^2.3.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",

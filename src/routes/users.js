@@ -1,5 +1,6 @@
 import Router from 'koa-router';
 import { Model, Database } from 'mongorito';
+import bcrypt from 'bcrypt';
 const db = new Database('localhost/lexmin');
 
 export class User extends Model {}
@@ -14,13 +15,19 @@ router
   ctx.body = await User.find();
 })
 .post('/users', async (ctx) => {
-  // TODO: authenticate
   const { name, password } = ctx.request.body;
-  const user = new User({
-    name,
-    password,
-  });
-  await user.save();
+  const saltRounds = 5;
+
+  await bcrypt
+    .hash(password, saltRounds)
+    .then(hash => {
+      const user = new User({
+        name,
+        password: hash,
+      });
+      user.save();
+  })
+
   ctx.status = 201;
 });
 

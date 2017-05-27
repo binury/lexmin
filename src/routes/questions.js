@@ -15,7 +15,10 @@ router
   .post('/questions', async (ctx) => {
     // TODO: authenticate
     const { title } = ctx.request.body;
-    const question = new Question({});
+    const question = new Question({
+      text: 'Test question',
+      author: 'Test author',
+    });
     await question.save();
     ctx.status = 201;
   });
