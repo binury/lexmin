@@ -10,25 +10,25 @@ db.connect();
 db.register(User);
 
 router
-.get('/users', async (ctx) => {
-  // TODO: restrict
-  ctx.body = await User.find();
-})
-.post('/users', async (ctx) => {
-  const { name, password } = ctx.request.body;
-  const saltRounds = 5;
-
-  await bcrypt
-    .hash(password, saltRounds)
-    .then(hash => {
-      const user = new User({
-        name,
-        password: hash,
-      });
-      user.save();
+  .get('/users', async (ctx) => {
+    // TODO: restrict
+    ctx.body = await User.find();
   })
+  .post('/users', async (ctx) => {
+    const {email, password} = ctx.request.body;
+    const saltRounds = 5;
 
-  ctx.status = 201;
-});
+    await bcrypt
+      .hash(password, saltRounds)
+      .then(hash => {
+        const user = new User({
+          email,
+          password: hash,
+        });
+        user.save();
+      });
+
+    ctx.status = 201;
+  });
 
 export default router;

@@ -19,7 +19,7 @@ test('listing is empty', async t => {
 
 test('create new resource', async t => {
   const { status } = await t.context.request.post('/users').send({
-    name: 'Test User',
+    email: 'testuser@test.net',
     password: 'testpassword123'
   });
   t.is(status, 201);

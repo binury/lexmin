@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "babel-node src/app.js",
+    "debug": "babel-node --inspect src/app.js",
     "test": "env MONGODB_URI=localhost/lexmin nyc ava --concurrency 1 --serial"
   },
   "ava": {
